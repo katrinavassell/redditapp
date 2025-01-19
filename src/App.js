@@ -50,7 +50,7 @@ function App() {
   // Fetch default subreddit on initial load
   useEffect(() => {
     fetchPosts("popular");
-  }, []);
+  });
 
   return (
     <div className="App">
