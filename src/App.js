@@ -6,30 +6,29 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [cache, setCache] = useState({}); // Cache to store results
+  const [cache, setCache] = useState({}); // Cache results to handle rate limits
 
   const fetchPosts = async (query) => {
-    const PROXY_URL = "https://corsproxy.io/?";
     const API_URL = `https://www.reddit.com/r/${query}.json`;
-  
+
     // Check if results are cached
     if (cache[query]) {
       setPosts(cache[query]);
       return;
     }
-  
+
     setLoading(true);
     setError(null);
-  
+
     try {
-      const response = await fetch(`${PROXY_URL}${API_URL}`);
+      const response = await fetch(API_URL);
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error("Failed to fetch data. Check the subreddit name.");
       }
-  
+
       const data = await response.json();
       const postsData = data.data.children.map((child) => child.data);
-  
+
       setPosts(postsData);
       setCache((prevCache) => ({
         ...prevCache,
@@ -41,7 +40,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };  
+  };
 
   const handleSearch = () => {
     if (!searchTerm.trim()) return; // Don't search if input is empty

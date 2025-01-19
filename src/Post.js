@@ -1,19 +1,13 @@
 import React from "react";
 
 function Post({ title, permalink, subreddit }) {
+  const postUrl = `https://www.reddit.com${permalink}`;
+
   return (
     <li>
-      <p>
-        <strong>{title}</strong>
-      </p>
-      <p>
-        Subreddit: <em>{subreddit}</em>
-      </p>
-      <a
-        href={`https://www.reddit.com${permalink}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <h3>{title}</h3>
+      <p>Subreddit: {subreddit}</p>
+      <a href={postUrl} target="_blank" rel="noopener noreferrer">
         View Post
       </a>
     </li>
