@@ -2,9 +2,11 @@
   text-align: center;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
 }
 
 input {
@@ -13,42 +15,48 @@ input {
   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 200px;
+  width: calc(100% - 120px);
+  box-sizing: border-box;
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
   border: none;
   border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
 }
 
-ul {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.list {
   list-style-type: none;
   padding: 0;
 }
 
-li {
-  margin-bottom: 20px;
+.list-item {
   background-color: white;
   padding: 15px;
+  margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-p {
-  margin: 10px 0;
-}
-
-p.error {
-  color: red;
-  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
 }
