@@ -1,13 +1,6 @@
 
-import { formatDistanceToNow } from 'date-fns';
-
-// Add relative time formatting to Date prototype
-Date.prototype.toRelativeTimeString = function() {
-  return formatDistanceToNow(this, { addSuffix: true });
-};
-
-
 import React, { useState } from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import recommendedTopics from './recommendedTopics';
 
 const App = () => {
@@ -17,10 +10,18 @@ const App = () => {
   const [error, setError] = useState(null);
   const [sortBy, setSortBy] = useState('relevance');
   const [timeRange, setTimeRange] = useState('all');
-  const [limit, setLimit] = useState(25);
+  const [maxResults] = useState(25);
 
   const sortOptions = ['relevance', 'hot', 'top', 'new'];
   const timeOptions = ['hour', 'day', 'week', 'month', 'year', 'all'];
+
+  const formatDate = (timestamp) => {
+    return new Date(timestamp * 1000).toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric', 
+      year: 'numeric' 
+    });
+  };
 
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
@@ -35,7 +36,7 @@ const App = () => {
       const response = await fetch(
         `https://www.reddit.com/search.json?q=${encodeURIComponent(
           searchTerm
-        )}&sort=${sortBy}&t=${timeRange}&limit=${limit}`
+        )}&sort=${sortBy}&t=${timeRange}&limit=${maxResults}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch results');
@@ -142,7 +143,7 @@ const App = () => {
                   <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                     <span>r/{result.subreddit}</span>
                     <span>•</span>
-                    <span>{new Date(result.created_utc * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                    <span>{formatDate(result.created_utc)}</span>
                   </div>
                   <a
                     href={`https://reddit.com${result.permalink}`}
