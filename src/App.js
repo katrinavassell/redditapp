@@ -10,6 +10,10 @@ const App = () => {
   const [timeRange, setTimeRange] = useState('all');
   const [limit, setLimit] = useState(25);
 
+  // Add sorting and filtering controls
+  const sortOptions = ['relevance', 'hot', 'top', 'new'];
+  const timeOptions = ['hour', 'day', 'week', 'month', 'year', 'all'];
+
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
       alert('Please enter a search term');
@@ -48,7 +52,28 @@ const App = () => {
       {/* Search Bar */}
       <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
         <div className="w-full max-w-md mb-6">
-        <div className="flex mb-4">
+        <div className="flex flex-col gap-4 mb-4">
+          <div className="flex gap-2">
+            <select 
+              value={sortBy} 
+              onChange={(e) => setSortBy(e.target.value)}
+              className="border border-gray-300 rounded p-2"
+            >
+              {sortOptions.map(option => (
+                <option key={option} value={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</option>
+              ))}
+            </select>
+            <select 
+              value={timeRange} 
+              onChange={(e) => setTimeRange(e.target.value)}
+              className="border border-gray-300 rounded p-2"
+            >
+              {timeOptions.map(option => (
+                <option key={option} value={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</option>
+              ))}
+            </select>
+          </div>
+          <div className="flex">
           <input
             type="text"
             placeholder="Search for posts"
