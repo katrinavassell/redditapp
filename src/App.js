@@ -5,6 +5,9 @@ const App = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [sortBy, setSortBy] = useState('relevance');
+  const [timeRange, setTimeRange] = useState('all');
+  const [limit, setLimit] = useState(25);
 
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
@@ -17,7 +20,9 @@ const App = () => {
 
     try {
       const response = await fetch(
-        `https://www.reddit.com/search.json?q=${encodeURIComponent(searchTerm)}`
+        `https://www.reddit.com/search.json?q=${encodeURIComponent(
+          searchTerm
+        )}&sort=${sortBy}&t=${timeRange}&limit=${limit}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch results');
