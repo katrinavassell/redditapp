@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { formatDistanceToNow } from 'date-fns';
 import recommendedTopics from './recommendedTopics';
 
 const App = () => {
