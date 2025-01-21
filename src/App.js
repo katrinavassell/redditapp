@@ -142,7 +142,7 @@ const App = () => {
                   <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                     <span>r/{result.subreddit}</span>
                     <span>•</span>
-                    <span>{new Date(result.created_utc * 1000).toRelativeTimeString()}</span>
+                    <span>{new Date(result.created_utc * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                   </div>
                   <a
                     href={`https://reddit.com${result.permalink}`}
