@@ -1,4 +1,12 @@
 
+import { formatDistanceToNow } from 'date-fns';
+
+// Add relative time formatting to Date prototype
+Date.prototype.toRelativeTimeString = function() {
+  return formatDistanceToNow(this, { addSuffix: true });
+};
+
+
 import React, { useState } from 'react';
 import recommendedTopics from './recommendedTopics';
 
@@ -131,7 +139,11 @@ const App = () => {
               <div key={result.id} className="bg-white overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="p-6">
                   <h3 className="text-lg font-medium text-gray-900 mb-2">{result.title}</h3>
-                  <p className="text-sm text-gray-500 mb-4">r/{result.subreddit}</p>
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                    <span>r/{result.subreddit}</span>
+                    <span>•</span>
+                    <span>{new Date(result.created_utc * 1000).toRelativeTimeString()}</span>
+                  </div>
                   <a
                     href={`https://reddit.com${result.permalink}`}
                     target="_blank"
