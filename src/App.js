@@ -59,7 +59,7 @@ const App = () => {
       </header>
 
       <main className="flex-grow max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-8 py-6 sm:px-12">
+        <div className="px-4 py-6 sm:px-0">
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
