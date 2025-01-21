@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import recommendedTopics from './recommendedTopics';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,7 +47,8 @@ const App = () => {
 
       {/* Search Bar */}
       <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
-        <div className="flex w-full max-w-md mb-6">
+        <div className="w-full max-w-md mb-6">
+        <div className="flex mb-4">
           <input
             type="text"
             placeholder="Search for posts"
@@ -61,6 +63,18 @@ const App = () => {
             Search
           </button>
         </div>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {recommendedTopics.map((topic) => (
+            <button
+              key={topic}
+              onClick={() => setSearchTerm(topic)}
+              className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-300"
+            >
+              {topic}
+            </button>
+          ))}
+        </div>
+      </div>
 
         {/* Loading Spinner */}
         {loading && (
