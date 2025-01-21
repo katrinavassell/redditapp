@@ -145,6 +145,7 @@ const App = () => {
                     <span>•</span>
                     <span>{formatDate(result.created_utc)}</span>
                   </div>
+                  <p className="text-gray-600 text-sm mb-4">{result.selftext || '(No description available)'}</p>
                   <a
                     href={`https://reddit.com${result.permalink}`}
                     target="_blank"
