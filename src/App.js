@@ -66,7 +66,7 @@ const App = () => {
                 <select 
                   value={sortBy} 
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="block w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                  className="block w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 py-3 px-4"
                 >
                   {sortOptions.map(option => (
                     <option key={option} value={option}>
@@ -77,7 +77,7 @@ const App = () => {
                 <select 
                   value={timeRange} 
                   onChange={(e) => setTimeRange(e.target.value)}
-                  className="block w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"
+                  className="block w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 py-3 px-4"
                 >
                   {timeOptions.map(option => (
                     <option key={option} value={option}>
