@@ -90,7 +90,7 @@ const App = () => {
               <div className="flex flex-1 gap-4">
                 <input
                   type="text"
-                  placeholder="Search Reddit posts..."
+                  placeholder="Search Reddit Posts"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="flex-1 w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 py-3 px-4"
@@ -167,7 +167,7 @@ const App = () => {
       <footer className="bg-gray-800">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-400 text-sm">
-            Powered by the Reddit API
+            Powered by the Reddit API. Built by Kat Laszlo.
           </p>
         </div>
       </footer>
