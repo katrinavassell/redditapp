@@ -87,13 +87,13 @@ const App = () => {
                 </select>
               </div>
               
-              <div className="flex space-x-4 px-8">
+              <div className="flex flex-1 gap-4">
                 <input
                   type="text"
                   placeholder="Search Reddit posts..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 py-3 px-4"
+                  className="flex-1 w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 py-3 px-4"
                   onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                 />
                 <button
